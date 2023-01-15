@@ -1,4 +1,4 @@
-package de.quickkey;
+package impl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,7 +34,7 @@ public class KeySearch extends AnAction {
         String bankSearchInput = JOptionPane.showInputDialog(
                 null,
                 "Bank/ASPSP search",
-                "KeyFinder",
+                "QuickKey",
                 JOptionPane.QUESTION_MESSAGE);
 
         //initialise BufferedReader with given File path
@@ -93,6 +93,7 @@ public class KeySearch extends AnAction {
         //shows result in a TextArea
         else {
             JTextArea text = new JTextArea(lines.toString());
+            text.setEditable(false);
             JOptionPane.showMessageDialog(
                     null,
                     text,

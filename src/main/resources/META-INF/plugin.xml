@@ -8,7 +8,7 @@
   <name>QuickKey</name>
 
   <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-  <vendor email="quickKey@support.com" url="https://www.quickkey.com">QuickKey</vendor>
+  <vendor email="quickKey@support.com" url="https://www.impl.com">QuickKey</vendor>
 
   <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
        Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -21,11 +21,22 @@
 
   <!-- Extension points defined by the plugin.
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-  <extensions defaultExtensionNs="com.intellij"></extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService
+            serviceImplementation="settings.AppSettingsState"/>
+    <applicationConfigurable
+            parentId="tools"
+            instance="settings.AppSettingsConfigurable"
+            id="settings.AppSettingsConfigurable"
+            displayName="QuickKey"/>
+
+
+1
+  </extensions>
   <actions>
     <action
             id="de.quickkey"
-            class="de.quickkey.KeySearch"
+            class="impl.KeySearch"
             text="QuickKey"
             description="KeySearch over all existing md files in our specific bias-key-storage repository">
       <keyboard-shortcut
