@@ -18,6 +18,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public class KeySearch extends AnAction {
+    private static String GIT = "git";
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
@@ -41,7 +42,33 @@ public class KeySearch extends AnAction {
         StringBuilder lines = new StringBuilder();
         String line;
 
+        File homeDirectory = new File(System.getProperty("user.home"));
         File rootDirectory = new File(System.getProperty("user.home") + prop.getProperty("ROOT_PATH"));
+        File gitDirectory = null;
+
+        if (!rootDirectory.exists()) {
+            File[] firstSubLayer = homeDirectory.listFiles(File::isDirectory);
+
+            for (File file : firstSubLayer) {
+                if (gitDirectory != null) {
+                    break;
+                }
+                if (file.getName().equals(GIT)) {
+                    gitDirectory = file;
+                    break;
+                }
+                if (file.listFiles() != null) {
+                    for (File subFolder : file.listFiles(File::isDirectory)) {
+                        if (subFolder.getName().equals(GIT)) {
+                            gitDirectory = subFolder;
+                            break;
+                        }
+                    }
+                }
+            }
+            rootDirectory = new File(gitDirectory.getPath() + prop.getProperty("ROOT_PATH"));
+        }
+
 
         if (rootDirectory.isDirectory()) {
             FileReader fileReader;

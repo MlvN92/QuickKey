@@ -14,9 +14,11 @@ public class AppSettingsComponent {
 
     private final JPanel myMainPanel;
     private final JBTextField myPathText = new JBTextField();
+
     public AppSettingsComponent() {
+        myPathText.setEnabled(false);
         myMainPanel = FormBuilder.createFormBuilder()
-                .addLabeledComponent(new JBLabel("Enter path for md.files: "), myPathText, 1, false)
+                .addLabeledComponent("Currently not supported!",new JTextPane(), 1, true )
                 .addComponentFillVertically(new JPanel(), 0)
                 .getPanel();
     }
