@@ -13,7 +13,10 @@
   <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
        Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-  <description>Find your keys in all our bias-key-storage md files</description>
+  <description>This tool allows to find all keys of a specific ASPSP in our bias-key-storage repository.
+
+    SHORTCUT WINDOWS: CTRL + ALT + G
+    MAC OS SHORTCUT: ⌘ + ⌥ + G</description>
 
   <!-- Product and plugin compatibility requirements.
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
